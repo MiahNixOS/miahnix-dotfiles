@@ -8,10 +8,7 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
-      ./hosts/main/sys/mounts.nix
-      ./cloudflared.nix
       ./nixvim.nix
-      ./ai.nix
     ];
 
   # Bootloader.
@@ -24,44 +21,26 @@
     };
 
 
-  boot.loader.systemd-boot.enable = false;
-  boot.loader.grub = {
-  	enable = true;
-	useOSProber = true;
-	efiSupport = true;
-	devices = [ "nodev" ];
-  };
-
+  boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  #boot.kernelPackages = pkgs.linuxPackages_latest;
+  # Enable QEMU Guest Agent for hypervisor info (IP address, etc.)
+  services.qemuGuest.enable = true;
+  # Enable Spice for better graphical integration (optional, but recommended)
+  services.spice-vdagentd.enable = true;
 
-  #hardware.graphics.enable = true;
-
-  # services.xserver.videoDrivers = ["nvidia"];
-  #
-  # hardware.nvidia = {
-  #   enable = true;
-  #   modesetting.enable = true;
-  #   open = false;
-  #   package = config.boot.kernelPackages.nvidiaPackages.beta;
-  # };
-  #
-  # # Use latest kernel.
-  # #boot.kernelPackages = pkgs.linuxPackages_latest;
-
-  boot.kernelParams = [ "nvidia-drm.fbdev=1" ];
-  hardware.graphics.enable = true;
-  services.xserver.videoDrivers = ["nvidia"];
-
-  hardware.nvidia = {
-    modesetting.enable = true;
-    powerManagement.enable = true;
-    forceFullCompositionPipeline = true;
-    open = false;
-    nvidiaSettings = true;
-    package = config.boot.kernelPackages.nvidiaPackages.beta;
-  };
+    boot.kernelParams = [ "nvidia-drm.fbdev=1" ];
+    #hardware.graphics.enable = true;
+    services.xserver.videoDrivers = ["nvidia"];
+   
+    hardware.nvidia = {
+      modesetting.enable = true;
+      powerManagement.enable = true;
+      forceFullCompositionPipeline = true;
+      open = true;
+      nvidiaSettings = true;
+      package = config.boot.kernelPackages.nvidiaPackages.beta;
+    };
  
    # Enable XDG desktop portals
   xdg.portal = {
@@ -69,24 +48,7 @@
 	wlr.enable = true;
   };
 
- # programs.obs-studio = {
- #    enable = true;
- # 
- #    package = (
- #      pkgs.obs-studio.override {
- #        cudaSupport = true;
- #      }
- #    );
- # 
- #    plugins = with pkgs.obs-studio-plugins; [
- #      wlrobs
- #      obs-pipewire-audio-capture
- #      obs-vaapi
- #      obs-gstreamer
- #      obs-vkcapture
- #    ];
- #  };
-  
+ 
   hardware.bluetooth.enable = true;
   services.power-profiles-daemon.enable = true;
   services.upower.enable = true;
@@ -100,6 +62,7 @@
   environment.sessionVariables = {
     QT_QPA_PLATFORM = "wayland";
   };
+
   services.samba.enable = true;
   services.avahi.enable = true;
   services.tumbler.enable = true;
@@ -107,29 +70,13 @@
 
 
   # PostgreSQL
-  services.postgresql = {
-    enable = true;
-    package = pkgs.postgresql_18; # Use this line
-    # ... other settings
-  };
+  # services.postgresql = {
+  #   enable = true;
+  #   package = pkgs.postgresql_18; # Use this line
+  #   # ... other settings
+  # };
 
-  #xdg.portal.extraPortals = with pkgs; [
-  #  xdg-desktop-portal-wlr # Essential for wlroots-based compositors like MangoWC
-  #];
-  # You might need to disable other portals if they cause conflicts
-  # xdg.portal.extraPortals = with pkgs; [ ]; # Example if you need to clear defaults first
-  #xdg.portal.wlr.enable = true; # Specific setting for the wlr portal
-
-  #programs.pkgs.noctalia-shell.enable = true;
-
-  networking.hostName = "miahnix"; # Define your hostname.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-
-  # Enable networking
+  networking.hostName = "miahnix-vm"; # Define your hostname.
   networking.networkmanager.enable = true;
 
   # Set your time zone.
@@ -150,11 +97,11 @@
     LC_TIME = "en_US.UTF-8";
   };
 
-  services.cloudflared.enable = true;
-  services.nginx.enable = true;
-  services.nginx.virtualHosts."localhost" = {
-    root = "/var/www/html"; # Or your chosen root directory
-  };
+  # # services.cloudflared.enable = true;
+  # services.nginx.enable = true;
+  # services.nginx.virtualHosts."localhost" = {
+  #   root = "/var/www/html"; # Or your chosen root directory
+  # };
 
 
   # Enable the X11 windowing system.
@@ -165,10 +112,22 @@
   services.displayManager.sddm.enable = true;
   services.desktopManager.plasma6.enable = true;
 
+  hardware.graphics = {
+    enable = true;
+    enable32Bit = true;
+  };
+
+  services.displayManager.sddm = {
+       wayland.enable = true;
+    };
+  services.displayManager.defaultSession = "mango";
+
+
   programs.hyprland = {
   	enable = true;
 	xwayland.enable = true;
   };
+
   programs.mango = {
   	enable = true;
 	#xwayland.enable = true;
@@ -181,7 +140,7 @@
   };
 
   # Enable CUPS to print documents.
-  services.printing.enable = true;
+  # services.printing.enable = true;
 
   # Enable sound with pipewire.
   services.pulseaudio.enable = false;
@@ -238,6 +197,10 @@
     vim
     tmux
     #neovim
+    libgbm
+    vulkan-loader
+    libglvnd
+    killall
     btop
     neofetch
     # obs-studio
@@ -248,16 +211,17 @@
     lazydocker
     tor-browser
     vlc
-    virt-manager
+    #virglrender
+    #virt-manager
     dnsmasq
     #luarocks
     yt-dlp
     lynx
-    ollama
-    lmstudio
-    pnpm
-    nodejs
-    nginx
+    #ollama
+    #lmstudio
+    #pnpm
+    #nodejs
+    #nginx
     gcc
     glibc
     wlroots
@@ -274,8 +238,8 @@
     opencode
 
     xdg-desktop-portal-wlr
-    cloudflared
-    rustdesk-flutter
+    #cloudflared
+    #rustdesk-flutter
     wget
     wayvnc
 

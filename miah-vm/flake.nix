@@ -30,7 +30,7 @@
     ...
   } @ inputs: {
   	# same nixos module as before
-    nixosConfigurations.miahnix = nixpkgs.lib.nixosSystem {
+    nixosConfigurations.miahnix-vm = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       specialArgs = {inherit inputs;};
       modules = [
