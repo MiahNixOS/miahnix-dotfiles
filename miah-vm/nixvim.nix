@@ -24,22 +24,11 @@
 
     };
 
-
-    plugins.neo-tree.enable = true;
-    plugins.neo-tree.settings = {
-      close_if_last_window = true;
-      filesystem = {
-        filtered_items = {
-          hide_dotfiles = false;
-        };
-      };
-    };
-
     plugins = {
-      treesitter.enable = true;
-      lazy.enable = true;
+      #treesitter.enable = true;
+      #lazy.enable = true;
       autoclose.enable = true;
-      dashboard.enable = true;
+      #dashboard.enable = true;
       web-devicons.enable = true;
       snacks.nvim.enable = true;
       snacks.rename.enable = true;
@@ -56,21 +45,23 @@
       {
         mode = "n";
         key = "<leader>e";
-        action = ":Neotree filesystem reveal left<CR>";
+        #action = ":NvimTreeToggle<CR>";
+        action = "<cmd>NvimTreeToggle<CR>";
         options = {
-          desc = "Toggle Neo-Tree";
+          silent = true;
+          remap = true;
         };
       }
+
       {
         mode = "n";
-        key = "<leader>E";
-        action = ":NvimTreeToggle<CR>";
+        key = "<leader>q";
+        action = ":q<CR>";
         options = {
           silent = true;
           remap = false;
         };
       }
     ];
-
   };
 }

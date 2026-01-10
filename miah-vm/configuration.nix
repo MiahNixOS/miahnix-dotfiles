@@ -9,6 +9,7 @@
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
       ./nixvim.nix
+      ./cloudflared.nix
     ];
 
   # Bootloader.
@@ -97,7 +98,7 @@
     LC_TIME = "en_US.UTF-8";
   };
 
-  # # services.cloudflared.enable = true;
+  services.cloudflared.enable = true;
   # services.nginx.enable = true;
   # services.nginx.virtualHosts."localhost" = {
   #   root = "/var/www/html"; # Or your chosen root directory
@@ -238,7 +239,7 @@
     opencode
 
     xdg-desktop-portal-wlr
-    #cloudflared
+    cloudflared
     #rustdesk-flutter
     wget
     wayvnc
