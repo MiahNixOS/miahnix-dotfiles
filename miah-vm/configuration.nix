@@ -9,7 +9,7 @@
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
       ./nixvim.nix
-      ./cloudflared.nix
+      #./cloudflared.nix
     ];
 
   # Bootloader.

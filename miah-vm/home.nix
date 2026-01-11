@@ -8,8 +8,10 @@
 		enable = true;
 		shellAliases = {
 			btw = "echo I use NixOs btw!";
+      nixvim = "nvim";
 		};
 	};
+
 	programs.alacritty = {
 		enable = true;
 		settings = {
@@ -19,6 +21,11 @@
 			font.size = 12.0;
 		};
 	};
+
+  programs.ghostty = {
+    enable = true;
+  };
+
 	programs.git = {
 		enable = true;
 	};
@@ -35,6 +42,7 @@
 	home.packages = [ 
 	inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
 	pkgs.alacritty
+  pkgs.ghostty
   # pkgs.neovim
 	pkgs.foot
 	];
