@@ -13,13 +13,13 @@
     ];
 
   # Bootloader.
-    boot.kernelModules = [ "kvm-amd" ];
-    programs.virt-manager.enable = true;
-    virtualisation.spiceUSBRedirection.enable = true;
-    virtualisation.libvirtd = {
-        enable = true;
-        qemu.vhostUserPackages = with pkgs; [ virtiofsd ];
-    };
+  #   boot.kernelModules = [ "kvm-amd" ];
+  #   programs.virt-manager.enable = true;
+  #   virtualisation.spiceUSBRedirection.enable = true;
+  #   virtualisation.libvirtd = {
+  #       enable = true;
+  #       qemu.vhostUserPackages = with pkgs; [ virtiofsd ];
+  #   };
 
 
   boot.loader.systemd-boot.enable = true;
@@ -29,25 +29,27 @@
   services.qemuGuest.enable = true;
   # Enable Spice for better graphical integration (optional, but recommended)
   services.spice-vdagentd.enable = true;
+  hardware.nvidia-container-toolkit.enable = true;
 
-    boot.kernelParams = [ "nvidia-drm.fbdev=1" ];
-    #hardware.graphics.enable = true;
+  #  boot.kernelParams = [ "nvidia-drm.fbdev=1" ];
+    hardware.graphics.enable = true;
     services.xserver.videoDrivers = ["nvidia"];
+    hardware.nvidia.open = true;
    
-    hardware.nvidia = {
-      modesetting.enable = true;
-      powerManagement.enable = true;
-      forceFullCompositionPipeline = true;
-      open = true;
-      nvidiaSettings = true;
-      package = config.boot.kernelPackages.nvidiaPackages.beta;
-    };
+  #   hardware.nvidia = {
+  #     modesetting.enable = true;
+  #     powerManagement.enable = true;
+  #     forceFullCompositionPipeline = true;
+  #     open = true;
+  #     nvidiaSettings = true;
+  #     package = config.boot.kernelPackages.nvidiaPackages.beta;
+  #   };
  
    # Enable XDG desktop portals
-  xdg.portal = {
-  	enable = true;
-	wlr.enable = true;
-  };
+  # xdg.portal = {
+  # 	enable = true;
+  # wlr.enable = true;
+  # };
 
  
   hardware.bluetooth.enable = true;
@@ -68,7 +70,12 @@
   services.avahi.enable = true;
   services.tumbler.enable = true;
 
-
+  programs.zsh = {
+    enable = true;
+    enableBashCompletion = true;
+    autosuggestions.enable = true;
+    syntaxHighlighting.enable = true;
+  };
 
   # PostgreSQL
   # services.postgresql = {
@@ -110,17 +117,18 @@
   services.xserver.enable = true;
 
   # Enable the KDE Plasma Desktop Environment.
-  services.displayManager.sddm.enable = true;
+  services.displayManager.sddm = {
+    enable = true;
+    wayland.enable = true;
+    wayland.compositor = "weston";
+  };
   services.desktopManager.plasma6.enable = true;
 
-  hardware.graphics = {
-    enable = true;
-    enable32Bit = true;
-  };
+  # hardware.graphics = {
+  #   enable = true;
+  #   enable32Bit = true;
+  # };
 
-  services.displayManager.sddm = {
-       wayland.enable = true;
-    };
   services.displayManager.defaultSession = "mango";
 
 
@@ -128,6 +136,9 @@
   	enable = true;
 	xwayland.enable = true;
   };
+
+  programs.waybar.enable = true;
+  programs.niri.enable = true;
 
   programs.mango = {
   	enable = true;
@@ -164,6 +175,7 @@
   # services.xserver.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
+  programs.fish.enable = true;
   users.users.archgodot = {
     isNormalUser = true;
     description = "ArchGodot";
@@ -172,6 +184,7 @@
       kdePackages.kate
     #  thunderbird
     ];
+    shell = pkgs.fish;
   };
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -212,6 +225,8 @@
     lazydocker
     tor-browser
     vlc
+    bat
+    eza
     #virglrender
     #virt-manager
     dnsmasq
@@ -262,11 +277,11 @@
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
-  # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
+  programs.mtr.enable = true;
+  programs.gnupg.agent = {
+    enable = true;
+    enableSSHSupport = true;
+  };
 
   # List services that you want to enable:
 
@@ -276,6 +291,7 @@
   # Open ports in the firewall.
   networking.firewall.allowedTCPPorts = [ 
     80
+    5900
   ];
 
   # networking.firewall.allowedUDPPorts = [ ... ];

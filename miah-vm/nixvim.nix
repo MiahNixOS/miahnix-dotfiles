@@ -5,26 +5,8 @@
 	enable = true;
     defaultEditor = true;
     colorschemes.base16.autoLoad = true;
-    #colorschemes.github-theme.enable = true;
-    #colorschemes.google-dark.enable = true;
-    colorschemes.darcula.enable = true;
-	  #colorschemes.gruvbox.enable = true;
-	  #colorschemes.dracula.enable = true;
-    colorschemes.tokyonight = {
-      enable = true;
-      tokyonight-night.enable = true;
-    };
-    #colorschemes.rose-pine.enable = true;
-    #colorschemes.material.enable = true;
-    #colorschemes.catppuccin.enable = true;
-    #colorschemes.moonfly.enable = true;
-    #colorschemes.nightfox.enable = true;
-    #colorschemes.carbonfox.enable = true;
-    #colorschemes.oxocarbon.enable = true;
-    #colorschemes.onedark.enable = true;
-    #colorschemes.bluloco.enable = true;
-
-
+    colorschemes.base16.enable = true;
+    
 	globals.mapleader = " ";
 
     opts = {
@@ -102,7 +84,7 @@
       {
         mode = "n";
         key = "<leader>3";
-        action = ":colorscheme tokyonight-night<CR>:lua print('ColorScheme: TokyoNight-Night')<CR>";
+        action = ":colorscheme base12-tokyonight-night<CR>:lua print('ColorScheme: TokyoNight-Night')<CR>";
         options = {
           silent = true;
           remap = false;

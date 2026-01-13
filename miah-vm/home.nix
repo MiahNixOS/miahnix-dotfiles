@@ -26,26 +26,32 @@
     enable = true;
   };
 
+  programs.zsh = {
+    enable = true;
+    };
+
+  programs.fish = {
+    enable = true;
+    shellAliases = {
+      ls = "eza";
+    };
+  };
+
 	programs.git = {
 		enable = true;
 	};
 
-	#home.file.".config/mango".source = ./config/mango;
-	#home.file.".config/nvim".source = ./config/nvim;
-  
-    home.pointerCursor = {
-        gtk.enable = true;
-        package = pkgs.vanilla-dmz;
-        name = "Vanilla-DMZ";
-    };
-	
 	home.packages = [ 
 	inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
 	pkgs.alacritty
   pkgs.ghostty
-  # pkgs.neovim
 	pkgs.foot
+  pkgs.python3
+  pkgs.zsh
+  pkgs.mongosh
+  pkgs.oh-my-zsh
+  pkgs.python313Packages.openai
+  pkgs.python313Packages.pymongo
+  inputs.home-manager.packages.${pkgs.stdenv.hostPlatform.system}.home-manager
 	];
-#	programs.zen-browser.enable = true;
 }
-
