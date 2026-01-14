@@ -225,6 +225,7 @@
     lazydocker
     tor-browser
     vlc
+    obsidian
     wlr-randr
     bat
     eza
