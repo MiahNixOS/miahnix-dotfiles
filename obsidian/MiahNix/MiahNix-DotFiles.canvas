@@ -1,0 +1,9 @@
+{
+	"nodes":[
+		{"id":"77565e10149a7c94","x":-120,"y":-420,"width":250,"height":50,"type":"text","text":"<CENTER>MiahNix-DotFiles</CENTER>\n"},
+		{"id":"1abb0738fce46d33","x":-62,"y":-220,"width":135,"height":50,"type":"text","text":"<CENTER>Miah-Nix</CENTER>"}
+	],
+	"edges":[
+		{"id":"e12d01bb7ffe275e","fromNode":"77565e10149a7c94","fromSide":"bottom","toNode":"1abb0738fce46d33","toSide":"top"}
+	]
+}

@@ -69,6 +69,7 @@
   services.samba.enable = true;
   services.avahi.enable = true;
   services.tumbler.enable = true;
+  services.flatpak.enable = true;
 
   programs.zsh = {
     enable = true;
@@ -225,7 +226,7 @@
     lazydocker
     tor-browser
     vlc
-    obsidian
+    #obsidian-wayland
     wlr-randr
     bat
     eza

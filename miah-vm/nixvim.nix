@@ -33,7 +33,7 @@
       #treesitter.enable = true;
       #lazy.enable = true;
       autoclose.enable = true;
-      #dashboard.enable = true;
+      dashboard.enable = true;
       web-devicons.enable = true;
       snacks.nvim.enable = true;
       lualine.enable = true;
