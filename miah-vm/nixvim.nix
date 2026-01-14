@@ -2,12 +2,18 @@
 
 {
   programs.nixvim = {
-	enable = true;
+    enable = true;
     defaultEditor = true;
-    colorschemes.base16.autoLoad = true;
-    colorschemes.base16.enable = true;
     
-	globals.mapleader = " ";
+    colorschemes.gruvbox.enable = true;
+
+    colorschemes.base16 = {
+      enable = true;
+      autoLoad = true;
+    };
+    colorscheme = "vim";
+
+    globals.mapleader = " ";
 
     opts = {
       number = true;
@@ -17,7 +23,7 @@
       softtabstop = 2;
       expandtab = true;
       shiftround = true;
-      # smartindent = true;
+      smartindent = true;
 
       clipboard = "unnamedplus";
 
@@ -94,6 +100,15 @@
         mode = "n";
         key = "<leader>4";
         action = ":colorscheme vim<CR>:lua print('ColorScheme: Vim')<CR>";
+        options = {
+          silent = true;
+          remap = false;
+        };
+      }
+       {
+        mode = "n";
+        key = "<leader>0";
+        action = ":colorscheme base16-atelier-seaside<CR>:lua print('ColorScheme: AteLier-SeaSide')<CR>";
         options = {
           silent = true;
           remap = false;

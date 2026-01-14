@@ -4,57 +4,48 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
-	# 3rd-party Flake, since Zen is not packaged in the main nixpkgs channel
-    zen-browser.url = "github:0xc000022070/zen-browser-flake";
-    mangowc.url = "github:DreamMaoMao/mangowc";
-    nixvim.url = "github:nix-community/nixvim";
-    noctalia.url = "github:noctalia-dev/noctalia-shell";
-
-	# include home-manager as an input, and let it 'follow' the main nixpkgs branch
-    # letting it install packages from nixpkgs instead of keeping its own repository
+    zen-browser = {
+      url = "github:0xc000022070/zen-browser-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    mangowc = {
+      url = "github:DreamMaoMao/mangowc";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    nixvim = {
+      url = "github:nix-community/nixvim";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    noctalia = {
+      url = "github:noctalia-dev/noctalia-shell";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     home-manager = {
-      url = "github:nix-community/home-manager";
+      url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
   };
 
-  outputs = {
-    self,
-    nixpkgs,
-    home-manager,
-    zen-browser,
-    mangowc,
-    noctalia,
-    nixvim,
-    ...
-  } @ inputs: {
-  	# same nixos module as before
+  outputs = { self,nixpkgs,home-manager,zen-browser,mangowc,noctalia,nixvim, ... } @ inputs: {
     nixosConfigurations.miahnix-vm = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       specialArgs = {inherit inputs;};
       modules = [
-        #./hosts/main/sys/configuration.nix
-	./configuration.nix
-	#./noctalia.nix
-
-	# creating a home-manager module as part of my systems config
-	mangowc.nixosModules.mango
-	nixvim.nixosModules.nixvim
+	      ./configuration.nix
+      	nixvim.nixosModules.nixvim
+      	mangowc.nixosModules.mango
         home-manager.nixosModules.home-manager
         {
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
-
-		  # settings for the user hest (that me!)
-          # sets which user to configure and where Nix should find the correct files
-          #home-manager.users.archgodot = import ./hosts/main/usr/home.nix;
-          home-manager.users.archgodot = import ./home.nix;
-          home-manager.extraSpecialArgs = {
-          
-          	# bring in the list of inputs into the home-manager module
-            inherit inputs;
-            system = "x86_64-linux";
+          home-manager = {
+            useGlobalPkgs = true;
+            useUserPackages = true;
+            users.archgodot = import ./home.nix;
+            backupFileExtension = "backup";
+            extraSpecialArgs = {
+              inherit inputs;
+              system = "x86_64-linux";
+            };
           };
         }
       ];

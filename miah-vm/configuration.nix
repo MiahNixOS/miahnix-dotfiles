@@ -225,6 +225,7 @@
     lazydocker
     tor-browser
     vlc
+    wlr-randr
     bat
     eza
     #virglrender

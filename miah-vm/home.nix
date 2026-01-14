@@ -12,6 +12,8 @@
 		};
 	};
 
+  home.file.".config/mango".source = ./config/mango;
+
 	programs.alacritty = {
 		enable = true;
 		settings = {
@@ -21,6 +23,14 @@
 			font.size = 12.0;
 		};
 	};
+
+  programs.rofi.enable = true;
+  programs.wofi.enable = true;
+
+  programs.quickshell = {
+    enable = true;
+    systemd.target = "mango-session.target";
+  };
 
   programs.ghostty = {
     enable = true;
@@ -41,17 +51,28 @@
 		enable = true;
 	};
 
-	home.packages = [ 
-	inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
-	pkgs.alacritty
-  pkgs.ghostty
-	pkgs.foot
-  pkgs.python3
-  pkgs.zsh
-  pkgs.mongosh
-  pkgs.oh-my-zsh
-  pkgs.python313Packages.openai
-  pkgs.python313Packages.pymongo
-  inputs.home-manager.packages.${pkgs.stdenv.hostPlatform.system}.home-manager
+	home.packages = with pkgs; [ 
+    inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
+    obsidian
+    alacritty
+    ghostty
+    nil
+    nodejs
+    ripgrep
+    pnpm
+    hyprland
+    niri
+    kitty
+    scenefx
+    waybar
+    niriswitcher
+    foot
+    python3
+    zsh
+    mongosh
+    oh-my-zsh
+    python313Packages.openai
+    python313Packages.pymongo
+    # inputs.home-manager.packages.${pkgs.stdenv.hostPlatform.system}.home-manager
 	];
 }
