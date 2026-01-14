@@ -1,7 +1,3 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
-
 { config, pkgs, lib, ... }:
 
 {
@@ -9,37 +5,18 @@
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
       #./hosts/main/sys/mounts.nix
-      ./cloudflared.nix
-      ./nixvim.nix
-      ./miah-docker.nix
-      ./ai.nix
+      ./main/cloudflared.nix
+      ./main/nixvim.nix
+      ./main/miah-docker.nix
+      ./main/ai.nix
+      ./main/virt-manager.nix
+      ./main/grub.nix
     ];
 
-    services.udisks2.enable = true;
+  services.udisks2.enable = true;
 
-  # Bootloader.
-    boot.kernelModules = [ "kvm-amd" ];
-    programs.virt-manager.enable = true;
-    virtualisation.spiceUSBRedirection.enable = true;
-    virtualisation.libvirtd = {
-        enable = true;
-        qemu.vhostUserPackages = with pkgs; [ virtiofsd ];
-    };
-
-    hardware.logitech.wireless.enable = true;
-    services.blueman.enable = true;
-
-    # programs.logiops.enable = true;
-
-  boot.loader.systemd-boot.enable = false;
-  boot.loader.grub = {
-  	enable = true;
-  	useOSProber = true;
-	  efiSupport = true;
-	  devices = [ "nodev" ];
-  };
-
-  boot.loader.efi.canTouchEfiVariables = true;
+  hardware.logitech.wireless.enable = true;
+  services.blueman.enable = true;
 
   #boot.kernelPackages = pkgs.linuxPackages_latest;
 
