@@ -11,8 +11,12 @@
       nixvim = "nvim";
 		};
 	};
+
   programs.fish = {
     enable = true;
+    shellAliases = {
+      ls = "eza";
+    };
   };
 
 	programs.alacritty = {
@@ -45,6 +49,7 @@
 	  alacritty
     qt6.wrapQtAppsHook
     qtcreator
+    eza
 	  foot
     python3
     ghostty
