@@ -13,11 +13,11 @@
             "state": {
               "type": "canvas",
               "state": {
-                "file": "MiahNix-DotFiles.canvas",
+                "file": "PsychoLogicalLee/MiahNix/MiahNix-OS/MiahNix-DotFiles/MiahNix-DotFiles.canvas",
                 "viewState": {
-                  "x": 0,
-                  "y": 0,
-                  "zoom": 0
+                  "x": -49,
+                  "y": -322,
+                  "zoom": -0.5
                 }
               },
               "icon": "lucide-layout-dashboard",
@@ -81,8 +81,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "right": {
     "id": "0aebbc8e1c695637",
@@ -189,8 +188,18 @@
   },
   "active": "ef5093d721178dce",
   "lastOpenFiles": [
+    "PsychoLogicalLee/MiahNix/MiahNix-Dev",
+    "PsychoLogicalLee/PLL-YT",
+    "PsychoLogicalLee/PLL-WWW",
+    "PsychoLogicalLee/PLL-LLC",
+    "PsychoLogicalLee",
+    "PsychoLogicalLee/MiahNix/MiahNix-OS/MiahNix-YT",
+    "PsychoLogicalLee/MiahNix/MiahNix-WWW",
+    "PsychoLogicalLee/MiahNix/MiahNix-OS/MiahNix-DotFiles/Miah-NixVM",
+    "PsychoLogicalLee/MiahNix/MiahNix-OS/MiahNix-DotFiles/Miah-NixGodot",
+    "PsychoLogicalLee/MiahNix/MiahNix-OS/MiahNix-DotFiles",
+    "PsychoLogicalLee/MiahNix/MiahNix-OS",
     "Welcome.md",
-    "MiahNix-DotFiles.canvas",
-    "Untitled.base"
+    "PsychoLogicalLee/MiahNix/MiahNix-OS/MiahNix-DotFiles/MiahNix-DotFiles.canvas"
   ]
 }

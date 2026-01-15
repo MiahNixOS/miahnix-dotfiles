@@ -1,17 +1,18 @@
 { config, pkgs, ... }:
 
 {
-programs.nixvim = {
-enable = true;
-defaultEditor = true;
-colorschemes.gruvbox.enable = true;
-#colorschemes.dracula.enable = true;
-#colorschemes.tokyonight.enable = true;
-colorschemes.base16 = {
-  enable = true;
-  autoload = true;
-  setUpBar = true;
-};
+  programs.nixvim = {
+    enable = true;
+    defaultEditor = true;
+    colorschemes.gruvbox.enable = true;
+    #colorschemes.dracula.enable = true;
+    #colorschemes.tokyonight.enable = true;
+    termguicolors = true;
+    colorschemes.base16 = {
+      enable = true;
+      autoload = true;
+      setUpBar = true;
+    };
 
     colorscheme = "vim";
 
@@ -42,9 +43,11 @@ colorschemes.base16 = {
       image.nvim.enable = true;
       nvim-tree.enable = true;
       lualine.enable = true;
+
       bufferline = {
         enable = true;
       };
+
       toggleterm = {
         enable = true;
         height = 15;
@@ -52,6 +55,7 @@ colorschemes.base16 = {
         terminal_mappings = true;
         direction = "horizontal";
       };
+
       #obsidian.enable = true;
       telescope = {
         enable = true;
@@ -161,16 +165,25 @@ colorschemes.base16 = {
           remap = true;
         };
       }
-
       {
         mode = "n";
         key = "<leader>q";
-        action = ":q<CR>";
+        action = "<cmd>bdelete<CR>";
         options = {
           silent = true;
           remap = false;
         };
       }
+      {
+        mode = "n";
+        key = "<C-q>";
+        action = "<cmd>bdelete<CR>";
+        options = {
+          silent = true;
+          remap = false;
+        };
+      }
+
       {
         mode = "n";
         key = "<leader>1";
