@@ -1,0 +1,29 @@
+{
+	"nodes":[
+		{"id":"2d177dc1fdfd3d82","x":-175,"y":-740,"width":250,"height":60,"type":"text","text":"PsychoLogicalLee"},
+		{"id":"2a84d8e12beae84c","x":-860,"y":-455,"width":250,"height":60,"type":"text","text":"PLL-YT"},
+		{"id":"8692c0f1b31d6271","x":-580,"y":-455,"width":250,"height":60,"type":"text","text":"PLL-CLASSES"},
+		{"id":"b2f71d1db05f886a","x":-300,"y":-455,"width":250,"height":60,"type":"text","text":"PLL-WWW"},
+		{"id":"0aac9ca708d4902c","x":-580,"y":-632,"width":250,"height":55,"type":"text","text":"PLL-LLC"},
+		{"id":"597e19be4db4a9d2","x":0,"y":-455,"width":250,"height":60,"type":"text","text":"MiahNix-YT"},
+		{"id":"e014815d8623c478","x":460,"y":-460,"width":250,"height":60,"type":"text","text":"MiahNixWWW"},
+		{"id":"77565e10149a7c94","type":"text","text":"MiahNix\n\n","x":293,"y":-632,"width":119,"height":50},
+		{"id":"ca78895df410aa78","x":43,"y":-180,"width":250,"height":60,"type":"text","text":"Miah-NixGodot"},
+		{"id":"1abb0738fce46d33","type":"text","text":"MiahNixOS","x":286,"y":-450,"width":134,"height":50},
+		{"id":"72810b685c3dadb7","x":228,"y":-320,"width":250,"height":60,"type":"text","text":"MiahNix-DotFiles"},
+		{"id":"dd8a36447fae1da3","x":420,"y":-180,"width":250,"height":60,"type":"text","text":"Miah-NixVM"}
+	],
+	"edges":[
+		{"id":"e12d01bb7ffe275e","fromNode":"77565e10149a7c94","fromSide":"bottom","toNode":"1abb0738fce46d33","toSide":"top"},
+		{"id":"5ebb727f625bdd01","fromNode":"1abb0738fce46d33","fromSide":"bottom","toNode":"72810b685c3dadb7","toSide":"top"},
+		{"id":"9dea6e82c8022f08","fromNode":"72810b685c3dadb7","fromSide":"bottom","toNode":"ca78895df410aa78","toSide":"top"},
+		{"id":"29cfc513cc683620","fromNode":"72810b685c3dadb7","fromSide":"bottom","toNode":"dd8a36447fae1da3","toSide":"top"},
+		{"id":"464ba6f60a49977c","fromNode":"77565e10149a7c94","fromSide":"top","toNode":"2d177dc1fdfd3d82","toSide":"bottom"},
+		{"id":"9d47c014a614276f","fromNode":"e014815d8623c478","fromSide":"top","toNode":"77565e10149a7c94","toSide":"bottom"},
+		{"id":"741131eed505b8ce","fromNode":"77565e10149a7c94","fromSide":"bottom","toNode":"597e19be4db4a9d2","toSide":"top"},
+		{"id":"0a2b759ccd2cb60d","fromNode":"2d177dc1fdfd3d82","fromSide":"bottom","toNode":"0aac9ca708d4902c","toSide":"top"},
+		{"id":"4a3560c7002d9611","fromNode":"0aac9ca708d4902c","fromSide":"bottom","toNode":"2a84d8e12beae84c","toSide":"top"},
+		{"id":"7aab0ddc8387af94","fromNode":"0aac9ca708d4902c","fromSide":"bottom","toNode":"b2f71d1db05f886a","toSide":"top"},
+		{"id":"e6e210f25d28256b","fromNode":"0aac9ca708d4902c","fromSide":"bottom","toNode":"8692c0f1b31d6271","toSide":"top"}
+	]
+}
