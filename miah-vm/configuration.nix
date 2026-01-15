@@ -226,6 +226,8 @@
     lazydocker
     tor-browser
     vlc
+    libnotify
+    ncdu
     #obsidian-wayland
     wlr-randr
     bat

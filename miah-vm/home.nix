@@ -70,8 +70,8 @@
     zsh
     mongosh
     oh-my-zsh
-    python313Packages.openai
-    python313Packages.pymongo
+    # python313Packages.openai
+     #python313Packages.pymongo
     # inputs.home-manager.packages.${pkgs.stdenv.hostPlatform.system}.home-manager
 	];
 }
