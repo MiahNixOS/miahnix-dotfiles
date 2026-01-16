@@ -27,6 +27,9 @@
       expandtab = true;
       shiftround = true;
       splitbelow = true;
+      linebreak = true;
+      wrap = true;
+      textwidth=40;
       # smartindent = true;
 
       clipboard = "unnamedplus";
@@ -46,6 +49,11 @@
 
       bufferline = {
         enable = true;
+        auto_hide = true;
+        options = {
+          mode = "tabs";
+          auto_hide = true;
+        };
       };
 
       toggleterm = {
