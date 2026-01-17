@@ -10,6 +10,7 @@
 					"www.miahnix.com" = "http://192.168.12.222:80";
           "vm.miahnix.com" = "ssh://192.168.122.145:22";
           "ai.miahnix.com" = "http://192.168.12.222:8080";
+          "vm2.miahnix.com" = "ssh://192.168.122.63:22";
 				};
 				default = "http_status:404";
 			};
