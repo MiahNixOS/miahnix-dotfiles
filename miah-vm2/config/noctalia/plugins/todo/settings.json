@@ -1,0 +1,42 @@
+{
+  "todos": [
+    {
+      "id": 1768635964629,
+      "text": "Break out Godot and MongoDB",
+      "completed": false,
+      "createdAt": "2026-01-17T07:46:04.629Z"
+    },
+    {
+      "id": 1768635955957,
+      "text": "Get Fluent in MongoDB for ToDo Server and other things...",
+      "completed": false,
+      "createdAt": "2026-01-17T07:45:55.957Z"
+    },
+    {
+      "id": 1768635921022,
+      "text": "TODO Server!!",
+      "completed": false,
+      "createdAt": "2026-01-17T07:45:21.022Z"
+    },
+    {
+      "id": 1768635884335,
+      "text": "Write Something To Barry",
+      "completed": false,
+      "createdAt": "2026-01-17T07:44:44.335Z"
+    },
+    {
+      "id": 1768635859502,
+      "text": "Look into NixOS ISO/USB Install",
+      "completed": false,
+      "createdAt": "2026-01-17T07:44:19.502Z"
+    },
+    {
+      "id": 1768635764456,
+      "text": "Move VM To SSD OR HDD",
+      "completed": false,
+      "createdAt": "2026-01-17T07:42:44.456Z"
+    }
+  ],
+  "count": 6,
+  "completedCount": 0
+}

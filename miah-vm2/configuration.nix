@@ -21,6 +21,9 @@
   #       qemu.vhostUserPackages = with pkgs; [ virtiofsd ];
   #   };
 
+  boot.kernel.sysctl = {
+    "vm.swapiness" = 1;
+  };
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -62,14 +65,38 @@
     enableOnBoot = true;
   };
 
+  environment.variables = {
+    GLIBC_TUNABLES = "glibc.pthread.rseq=0";
+  };
+
   environment.sessionVariables = {
     QT_QPA_PLATFORM = "wayland";
+    GLIBC_TUNABLES = "glibc.pthread.rseq=0";
   };
 
   services.samba.enable = true;
   services.avahi.enable = true;
   services.tumbler.enable = true;
   services.flatpak.enable = true;
+
+#  services.mongodb = {
+#    enable = true;
+#    package = pkgs.mongodb-ce;
+#    enableAuth = true;
+#    initialRootPassword = "TempPass";
+#    passwordHash = "grr";
+#    initialRootPasswordFile = ./password; 
+#  };
+
+#  systemd.services.mongodb = {
+#    environment = {
+#      GLIBC_TUNABLES="glibc.pthread.rseq=0";
+#    };
+#  };
+  
+#  services.mongodb.enable = true;
+
+  boot.kernelParams = [ "transparent_hugepage=always" ];
 
   programs.zsh = {
     enable = true;
@@ -223,6 +250,9 @@
     lazydocker
     tor-browser
     vlc
+    mongodb-ce
+    godot
+    blender
     hyprshot
     libnotify
     ncdu
