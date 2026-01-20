@@ -29,7 +29,7 @@
       splitbelow = true;
       linebreak = true;
       wrap = true;
-      textwidth=40;
+      textwidth=80;
       # smartindent = true;
 
       clipboard = "unnamedplus";
@@ -44,15 +44,32 @@
       snacks.nvim.enable = true;
       snacks.rename.enable = true;
       image.nvim.enable = true;
-      nvim-tree.enable = true;
+      # nvim-tree.enable = true;
+      neo-tree = {
+        enable = true;
+        settings.windowMappings = {
+          "open_tabnew" = "<CR>";
+        };
+        opts = {
+          filesystem = {
+            filtered_items = {
+              hide_dotfiles = true;
+            };
+            source = "filesystem";
+          };
+          window.mappings = {
+            "open_tabnew" = "<CR>";
+          };
+        };
+      };
       lualine.enable = true;
 
       bufferline = {
         enable = true;
-        auto_hide = true;
-        options = {
-          mode = "tabs";
-          auto_hide = true;
+        settings.options = {
+         # mode = "tabs";
+          always_show_bufferline = false;
+          showtabline = 1;
         };
       };
 
@@ -164,15 +181,33 @@
           remap = false;
         };
       }
+      # {
+      #   mode = "n";
+      #   key = "<leader>e";
+      #   action = "<cmd>NvimTreeToggle<CR>";
+      #   options = {
+      #     silent = true;
+      #     remap = true;
+      #   };
+      # } 
       {
         mode = "n";
         key = "<leader>e";
-        action = "<cmd>NvimTreeToggle<CR>";
+        action = "<cmd>Neotree toggle<CR>";
         options = {
           silent = true;
           remap = true;
         };
       }
+      # {
+      #   mode = "n";
+      #   key = "<leader>t";
+      #   action = "<cmd>Neotree show<CR>";
+      #   options = {
+      #     silent = true;
+      #     remap = true;
+      #   };
+      # }
       {
         mode = "n";
         key = "<leader>q";

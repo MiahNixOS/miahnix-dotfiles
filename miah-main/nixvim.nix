@@ -7,6 +7,7 @@
     colorschemes.gruvbox.enable = true;
     #colorschemes.dracula.enable = true;
     #colorschemes.tokyonight.enable = true;
+    termguicolors = true;
     colorschemes.base16 = {
       enable = true;
       autoload = true;
@@ -25,6 +26,10 @@
       softtabstop = 2;
       expandtab = true;
       shiftround = true;
+      splitbelow = true;
+      linebreak = true;
+      wrap = true;
+      textwidth=80;
       # smartindent = true;
 
       clipboard = "unnamedplus";
@@ -39,8 +44,44 @@
       snacks.nvim.enable = true;
       snacks.rename.enable = true;
       image.nvim.enable = true;
-      nvim-tree.enable = true;
+      # nvim-tree.enable = true;
+      neo-tree = {
+        enable = true;
+        settings.windowMappings = {
+          "open_tabnew" = "<CR>";
+        };
+        opts = {
+          filesystem = {
+            filtered_items = {
+              hide_dotfiles = true;
+            };
+            source = "filesystem";
+          };
+          window.mappings = {
+            "open_tabnew" = "<CR>";
+          };
+        };
+      };
       lualine.enable = true;
+
+      bufferline = {
+        enable = true;
+        settings.options = {
+         # mode = "tabs";
+          always_show_bufferline = false;
+          showtabline = 1;
+        };
+      };
+
+      toggleterm = {
+        enable = true;
+        height = 15;
+        insert_mappings = false;
+        terminal_mappings = true;
+        direction = "horizontal";
+      };
+
+      #obsidian.enable = true;
       telescope = {
         enable = true;
         extensions = {
@@ -58,6 +99,7 @@
       };
       
       which-key.enable = true;
+      nvim-lspconfig.enable = true;
       nvim-cmp.enable = true;
       copilot.enable = true;
       mason.enable = true;
@@ -77,25 +119,114 @@
 
     keymaps = [
       {
-        mode = "n";
-        key = "<leader>e";
-        #action = ":NvimTreeToggle<CR>";
-        action = "<cmd>NvimTreeToggle<CR>";
-        options = {
-          silent = true;
-          remap = true;
-        };
-      }
-
-      {
-        mode = "n";
-        key = "<leader>q";
-        action = ":q<CR>";
+        mode = [ "n" "t" ];
+        key = "<C-t>";
+        action = "<cmd>ToggleTerm<CR>";
         options = {
           silent = true;
           remap = false;
         };
       }
+      {
+        mode = [ "n" "t" ];
+        key = "<C-h>";
+        action = "<C-w>h";
+        options = {
+          silent = true;
+          remap = false;
+        };
+      }
+      {
+        mode = [ "n" "t" ];
+        key = "<C-l>";
+        action = "<C-w>l";
+        options = {
+          silent = true;
+          remap = false;
+        };
+      }
+      {
+        mode = [ "n" "t" ];
+        key = "<C-j>";
+        action = "<cmd>wincmd j<CR>";
+        options = {
+          silent = true;
+          remap = false;
+        };
+      }
+      {
+        mode = [ "n" "t" ];
+        key = "<C-k>";
+        action = "<cmd>wincmd k<CR>";
+        options = {
+          silent = true;
+          remap = false;
+        };
+      }
+      {
+        mode = [ "n" "t" ];
+        key = "<C-n>";
+        action = "<cmd>bn<CR>";
+        options = {
+          silent = true;
+          remap = false;
+        };
+      }
+      {
+        mode = [ "n" "t" ];
+        key = "<C-p>";
+        action = "<cmd>bp<CR>";
+        options = {
+          silent = true;
+          remap = false;
+        };
+      }
+      # {
+      #   mode = "n";
+      #   key = "<leader>e";
+      #   action = "<cmd>NvimTreeToggle<CR>";
+      #   options = {
+      #     silent = true;
+      #     remap = true;
+      #   };
+      # } 
+      {
+        mode = "n";
+        key = "<leader>e";
+        action = "<cmd>Neotree toggle<CR>";
+        options = {
+          silent = true;
+          remap = true;
+        };
+      }
+      # {
+      #   mode = "n";
+      #   key = "<leader>t";
+      #   action = "<cmd>Neotree show<CR>";
+      #   options = {
+      #     silent = true;
+      #     remap = true;
+      #   };
+      # }
+      {
+        mode = "n";
+        key = "<leader>q";
+        action = "<cmd>bdelete<CR>";
+        options = {
+          silent = true;
+          remap = false;
+        };
+      }
+      {
+        mode = "n";
+        key = "<C-q>";
+        action = "<cmd>bdelete<CR>";
+        options = {
+          silent = true;
+          remap = false;
+        };
+      }
+
       {
         mode = "n";
         key = "<leader>1";
