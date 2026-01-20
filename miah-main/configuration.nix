@@ -261,8 +261,8 @@
     lazydocker
     tor-browser
     vlc
-    ventoy
     gparted
+    systrayhelper
     # fish
     # koncentro
     # pomotroid
