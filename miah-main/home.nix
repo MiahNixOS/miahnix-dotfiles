@@ -46,6 +46,7 @@
   
 	home.packages = with pkgs; [ 
 	  inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
+	  inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
 	  alacritty
     qt6.wrapQtAppsHook
     qtcreator

@@ -123,7 +123,6 @@
   # xdg.portal.extraPortals = with pkgs; [ ]; # Example if you need to clear defaults first
   #xdg.portal.wlr.enable = true; # Specific setting for the wlr portal
 
-  #programs.pkgs.noctalia-shell.enable = true;
 
   networking.hostName = "miahnix"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -314,7 +313,6 @@
     slurp
     swaybg
     quickshell
-    pkgs.noctalia-shell
   ];
 
   fonts.packages = with pkgs; [
