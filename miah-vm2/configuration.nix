@@ -293,7 +293,8 @@
     slurp
     swaybg
     quickshell
-    pkgs.noctalia-shell
+    #inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
+    #pkgs.noctalia-shell
   ];
 
   fonts.packages = with pkgs; [
