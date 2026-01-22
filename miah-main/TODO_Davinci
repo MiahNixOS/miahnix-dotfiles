@@ -1,0 +1,3 @@
+nix-ld
+libqwayland-generic.so
+libqxcb.so
