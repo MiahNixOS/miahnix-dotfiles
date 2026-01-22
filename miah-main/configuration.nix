@@ -19,11 +19,16 @@
     services.udisks2.enable = true;
 
   # Bootloader.
+    hardware.decklink.enable = true;
     boot.kernelModules = [ "kvm-amd" ];
-    programs.virt-manager.enable = true;
+    programs.xwayland.enable = true;
+    programs.virt-manager = {
+     enable = true;
+    };
     virtualisation.spiceUSBRedirection.enable = true;
     virtualisation.libvirtd = {
         enable = true;
+        onBoot = "start";
         qemu.vhostUserPackages = with pkgs; [ virtiofsd ];
     };
 
@@ -101,6 +106,7 @@
   services.gvfs.enable = true;
 
   environment.sessionVariables = {
+    NIXOS_OZONEWL=1;
     QT_QPA_PLATFORM = "wayland";
   };
   services.samba.enable = true;
@@ -162,18 +168,19 @@
   # Enable the X11 windowing system.
   # You can disable this if you're only using the Wayland session.
   services.xserver.enable = true;
+  #programs.xwayland.satellite.enable = true;
 
   # Enable the KDE Plasma Desktop Environment.
   services.displayManager.sddm.enable = true;
   services.desktopManager.plasma6.enable = true;
 
   programs.hyprland = {
-  	enable = true;
-	xwayland.enable = true;
+    enable = true;
+	  xwayland.enable = true;
   };
+
   programs.mango = {
   	enable = true;
-	#xwayland.enable = true;
   };
 
   # Configure keymap in X11
@@ -260,6 +267,12 @@
     lazydocker
     tor-browser
     vlc
+    nix-ld
+    xwayland-satellite
+    libappindicator
+    blender
+    godot
+    davinci-resolve-studio
     gparted
     systrayhelper
     # fish
