@@ -23,14 +23,14 @@
     boot.kernelModules = [ "kvm-amd" ];
     programs.xwayland.enable = true;
     programs.virt-manager = {
-     enable = true;
+      enable = true;
     };
 
+    systemd.services.libvirtd.unitConfig.RequiresMountsFor = [ "/mnt/MacStore" ];
     virtualisation.spiceUSBRedirection.enable = true;
     users.groups.libvirtd.members = ["archgodot"];
     nix.settings.download-buffer-size = 52488000;
 
-    #services.libvirtd.enable = true;
     virtualisation.libvirtd = {
         enable = true;
         onBoot = "start";
@@ -194,6 +194,8 @@
     lazydocker
     tor-browser
     vlc
+    ffmpeg
+    killall
     starship
     emacs
     ripgrep
@@ -255,6 +257,8 @@
 
   fonts.packages = with pkgs; [
   	nerd-fonts.jetbrains-mono
+    jetbrains-mono
+    # fonts.jetbrains.mono
   ];
 
   programs.nix-ld.enable = true;
