@@ -21,9 +21,6 @@
   #       qemu.vhostUserPackages = with pkgs; [ virtiofsd ];
   #   };
 
-  boot.kernel.sysctl = {
-    "vm.swapiness" = 1;
-  };
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -32,27 +29,14 @@
   services.qemuGuest.enable = true;
   # Enable Spice for better graphical integration (optional, but recommended)
   services.spice-vdagentd.enable = true;
-  hardware.nvidia-container-toolkit.enable = true;
+  # hardware.nvidia-container-toolkit.enable = true;
 
-  #  boot.kernelParams = [ "nvidia-drm.fbdev=1" ];
-    hardware.graphics.enable = true;
-    services.xserver.videoDrivers = ["nvidia"];
-    hardware.nvidia.open = true;
-   
-  #   hardware.nvidia = {
-  #     modesetting.enable = true;
-  #     powerManagement.enable = true;
-  #     forceFullCompositionPipeline = true;
-  #     open = true;
-  #     nvidiaSettings = true;
-  #     package = config.boot.kernelPackages.nvidiaPackages.beta;
-  #   };
- 
-   # Enable XDG desktop portals
-  # xdg.portal = {
-  # 	enable = true;
-  # wlr.enable = true;
-  # };
+  hardware.graphics.enable = true;
+
+  xdg.portal = {
+ 	  enable = true;
+    wlr.enable = true;
+  };
 
  
   hardware.bluetooth.enable = true;
@@ -65,38 +49,9 @@
     enableOnBoot = true;
   };
 
-  environment.variables = {
-    GLIBC_TUNABLES = "glibc.pthread.rseq=0";
-  };
-
-  environment.sessionVariables = {
-    QT_QPA_PLATFORM = "wayland";
-    GLIBC_TUNABLES = "glibc.pthread.rseq=0";
-  };
-
   services.samba.enable = true;
   services.avahi.enable = true;
   services.tumbler.enable = true;
-  services.flatpak.enable = true;
-
-#  services.mongodb = {
-#    enable = true;
-#    package = pkgs.mongodb-ce;
-#    enableAuth = true;
-#    initialRootPassword = "TempPass";
-#    passwordHash = "grr";
-#    initialRootPasswordFile = ./password; 
-#  };
-
-#  systemd.services.mongodb = {
-#    environment = {
-#      GLIBC_TUNABLES="glibc.pthread.rseq=0";
-#    };
-#  };
-  
-#  services.mongodb.enable = true;
-
-  boot.kernelParams = [ "transparent_hugepage=always" ];
 
   programs.zsh = {
     enable = true;
@@ -162,7 +117,7 @@
 
   programs.hyprland = {
   	enable = true;
-	xwayland.enable = true;
+	  xwayland.enable = true;
   };
 
   programs.waybar.enable = true;
@@ -170,7 +125,6 @@
 
   programs.mango = {
   	enable = true;
-	#xwayland.enable = true;
   };
 
   # Configure keymap in X11
@@ -204,6 +158,7 @@
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   programs.fish.enable = true;
+  programs.starship.enable = true;
   users.users.archgodot = {
     isNormalUser = true;
     description = "ArchGodot";
@@ -250,6 +205,7 @@
     lazydocker
     tor-browser
     vlc
+    starship
     mongodb-ce
     godot
     blender
@@ -259,13 +215,9 @@
     wlr-randr
     bat
     eza
-    #virglrender
-    #virt-manager
     dnsmasq
     yt-dlp
     lynx
-    #gcc
-    #glibc
     wlroots
     thunar
     thunar-archive-plugin
@@ -275,34 +227,25 @@
     pwvucontrol
     pulseaudio
     pipewire
-
-    #rustup
-    #opencode
-
     xdg-desktop-portal-wlr
     cloudflared
-    #rustdesk-flutter
     wget
     wayvnc
-
     kitty
     foot
     wmenu
     wl-clipboard
     grim
     slurp
+    swappy
     swaybg
     quickshell
-    #inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
-    #pkgs.noctalia-shell
   ];
 
   fonts.packages = with pkgs; [
   	nerd-fonts.jetbrains-mono
   ];
 
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
   programs.mtr.enable = true;
   programs.gnupg.agent = {
     enable = true;

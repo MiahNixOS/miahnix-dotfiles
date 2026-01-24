@@ -12,7 +12,7 @@
 		};
 	};
 
-  home.file.".config/mango".source = ./config/mango;
+  #home.file.".config/mango".source = ./config/mango;
   #home.file.".config/noctalia".source = ./config/noctalia;
 
 	programs.alacritty = {
