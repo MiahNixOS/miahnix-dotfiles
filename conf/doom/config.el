@@ -1,11 +1,33 @@
-;;; $DOOMDIR/config.el -*- lexical-binding: t; -*-
+(setq confirm-kill-emacs nil)
+(setq display-line-numbers-type t)
+(setq initial-buffer-choice 'eshell)
 
-;; Place your private configuration here! Remember, you do not need to run 'doom
-;; sync' after modifying this file!
+(map! :leader
+      :desc "Comment Line" "#" #'comment-line)
 
+(setq doom-theme 'doom-one)
+(setq doom-font (font-spec :family "JetBrains Mono" :size 15))
 
-;; Some functionality uses this to identify you, e.g. GPG configuration, email
-;; clients, file templates and snippets. It is optional.
+;;
+(custom-theme-set-faces!
+  'doom-one
+  '(org-level-8 :inherit outline-3 :height 1.0)
+  '(org-level-7 :inherit outline-3 :height 1.0)
+  '(org-level-6 :inherit outline-3 :height 1.1)
+  '(org-level-5 :inherit outline-3 :height 1.2)
+  '(org-level-4 :inherit outline-3 :height 1.3)
+  '(org-level-3 :inherit outline-3 :height 1.4)
+  '(org-level-2 :inherit outline-2 :height 1.5)
+  '(org-level-1 :inherit outline-1 :height 1.6)
+  '(org-document-title :height 1.8 :bold t :underline nil)
+)
+
+(setq org-directory "~/.config/OrganEyez/")
+(setq org-modern-table-vertical 1)
+(setq org-modern-table t)
+(add-hook 'org-mode-hook #'hl-todo-mode)
+;;
+
 ;; (setq user-full-name "John Doe"
 ;;       user-mail-address "john@doe.com")
 
@@ -24,20 +46,6 @@
 ;;(setq doom-font (font-spec :family "Fira Code" :size 12 :weight 'semi-light)
 ;;      doom-variable-pitch-font (font-spec :family "Fira Sans" :size 13))
 ;;
-(setq doom-font (font-spec :family "JetBrains Mono" :size 15))
-;;
-(custom-theme-set-faces!
-  'doom-one
-  '(org-level-8 :inherit outline-3 :height 1.0)
-  '(org-level-7 :inherit outline-3 :height 1.0)
-  '(org-level-6 :inherit outline-3 :height 1.1)
-  '(org-level-5 :inherit outline-3 :height 1.2)
-  '(org-level-4 :inherit outline-3 :height 1.3)
-  '(org-level-3 :inherit outline-3 :height 1.4)
-  '(org-level-2 :inherit outline-2 :height 1.5)
-  '(org-level-1 :inherit outline-1 :height 1.6)
-  '(org-document-title :height 1.8 :bold t :underline nil))
-;;
 ;; If you or Emacs can't find your font, use 'M-x describe-font' to look them
 ;; up, `M-x eval-region' to execute elisp code, and 'M-x doom/reload-font' to
 ;; refresh your font settings. If Emacs still can't find your font, it likely
@@ -46,21 +54,12 @@
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
-(setq doom-theme 'doom-one)
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
-(setq display-line-numbers-type t)
 
-(map! :leader
-      :desc "Comment Line" "#" #'comment-line)
-
-;; If you use `org' and don't want your org files in the default location below,
+;;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
-(setq org-directory "~/OrganEyez/")
-(setq org-modern-table-vertical 1)
-(setq org-modern-table t)
-(add-hook 'org-mode-hook #'hl-todo-mode)
 
 ;; Whenever you reconfigure a package, make sure to wrap your config in an
 ;; `after!' block, otherwise Doom's defaults may override your settings. E.g.
@@ -93,7 +92,3 @@
 ;;
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
-
-(setq confirm-kill-emacs nil)
-
-(setq initial-buffer-choice 'eshell)
