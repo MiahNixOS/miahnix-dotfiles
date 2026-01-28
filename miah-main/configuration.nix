@@ -10,6 +10,7 @@
       ./hardware-configuration.nix
       #./hosts/main/sys/mounts.nix
       ./cloudflared.nix
+      ./postgres.nix
       ./samba.nix
       ./nixvim.nix
       ./miah-docker.nix
@@ -82,10 +83,10 @@
   services.avahi.enable = true;
   services.tumbler.enable = true;
 
-  services.postgresql = {
-    enable = true;
-    package = pkgs.postgresql_18; # Use this line
-  };
+  # services.postgresql = {
+  #   enable = true;
+  #   package = pkgs.postgresql_18; # Use this line
+  # };
 
   networking.hostName = "miahnix"; # Define your hostname.
   networking.networkmanager.enable = true;
@@ -144,7 +145,12 @@
     #jack.enable = true;
   };
 
-  programs.fish.enable = true;
+  programs.fish = {
+    enable = true;
+    shellInit = ''
+      source ${./config/fish/fish-funcs.fish}
+    '';
+  };
   programs.starship.enable = true;
   environment.shells = with pkgs; [ fish ];
 
@@ -194,6 +200,10 @@
     lazydocker
     tor-browser
     vlc
+    libnotify
+    discord
+    fastfetch
+    sqlite
     ffmpeg
     killall
     starship

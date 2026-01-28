@@ -16,6 +16,7 @@
     enable = true;
     shellAliases = {
       ls = "eza";
+      emacs = "emacsclient -c -a 'emacs' ";
     };
   };
 
