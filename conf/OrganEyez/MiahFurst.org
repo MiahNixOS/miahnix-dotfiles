@@ -1,3 +1,7 @@
 #+title: Miah Furst
 
 * Miah Furst Org File
+This is going to have notes in it I guess! Why not?
+
+* Themes:
+doom-acario-dark

@@ -5,12 +5,22 @@
 (map! :leader
       :desc "Comment Line" "#" #'comment-line)
 
-(setq doom-theme 'doom-one)
+;; (setq doom-theme 'doom-one)
+;; (setq doom-theme 'doom-acario-dark)
+;; (setq doom-theme 'wombat)
+;; (setq doom-theme 'doom-dracula)
+;; (setq doom-theme 'modus-vivendi)
+(setq doom-theme 'doom-monokai-pro)
 (setq doom-font (font-spec :family "JetBrains Mono" :size 15))
 
 ;;
 (custom-theme-set-faces!
-  'doom-one
+  ;; 'doom-one
+  ;; 'doom-acario-dark
+  ;; 'wombat
+  ;; 'doom-dracula
+  ;; 'modus-vivendi
+  'doom-monokai-pro
   '(org-level-8 :inherit outline-3 :height 1.0)
   '(org-level-7 :inherit outline-3 :height 1.0)
   '(org-level-6 :inherit outline-3 :height 1.1)

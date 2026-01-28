@@ -1,0 +1,3 @@
+#+TITLE: Org Mode Test
+#+DESCRIPTION: Just What IT Says!
+#+Author: Arch Godot

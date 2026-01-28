@@ -1,0 +1,40 @@
+#+title: Notes
+#+Description: Mostly Notes on Org Stuff!
+#+Author: Arch Godot
+
+
+* Quotes:
+#+begin_quote
+Everything is Philosophy,
+Until it is UnderStood.
+Then it becomes Technique,
+Then it becomes Reflex,
+Then it becomes Truth.
+#+end_quote
+
+#+begin_quote
+Most Fighters train their bodies, but
+Neglect the weapon that determines
+Every Fight Before It Begins...
+#+end_quote
+
+From: Bruce Lee Encounters
+Link: https://www.youtube.com/watch?v=9fpzHbA2AR4
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+* Reading N. Manuals
+
+** Org Mode Manual:
+Hit M-x (Alt-x) then type: org-info <cr>
